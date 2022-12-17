@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { useHistory } from 'react-router-dom'
 
 import { Container } from './styles';
 
@@ -6,6 +7,11 @@ import { ThemeContext } from '../../contexts/ThemeContext'
 
 export default function Header() {
   const { onToggleTheme, theme } = useContext(ThemeContext)
+  const history = useHistory()
+
+  function handleNavigate() {
+    history.push('/')
+  }
 
   return (
     <Container>
@@ -16,6 +22,7 @@ export default function Header() {
       >
         {theme === 'dark' ? '🌞' : '🌚'}
       </button>
+      <button onClick={handleNavigate}>Voltar para a home</button>
     </Container>
   );
 }
